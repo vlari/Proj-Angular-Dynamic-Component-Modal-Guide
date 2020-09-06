@@ -50,5 +50,18 @@ describe('ModalcontainerComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    expect(component.title).toBe(data.title);
+  });
+
+  it('should receive host component inputs', () => {
+    expect(hostComponentRef.instance.myInput).toBe(data.myInput);
+  });
+  
+  it('should emit event', () => {
+    const expectedData = 'Event triggered';
+    const spy = spyOn(component['myEvent'], 'emit');
+    hostComponentRef.instance.myEvent.emit(expectedData);
+    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledWith(expectedData);
   });
 });

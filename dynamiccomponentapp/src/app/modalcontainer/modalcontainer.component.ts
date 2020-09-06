@@ -33,6 +33,7 @@ export class ModalcontainerComponent implements OnInit, OnDestroy {
     const factory = this.resolver.resolveComponentFactory(this.data.component);
     this.componentRef = this.vcRef.createComponent(factory);
     const hostComponent = this.componentRef.instance;
+    this.title = title;
 
     // Pass inputs if any.
     if (inputOptions) {
